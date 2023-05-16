@@ -4,6 +4,7 @@ import '../globals.css'
 
 import { getPages } from '@/sanity/utils/sanity-utils';
 import { ProviderTheme } from '@/providers/themeProvider';
+import ThemeSwitcher from '../components/buttons/ThemeSwitcher';
 
 export const metadata: Metadata = {
   title: 'Personal Portfolio',
@@ -18,9 +19,11 @@ export default async function RootLayout({
 
   const pages = await getPages();
 
+  // max-w-8xl mx-auto px-4 sm:px-6 md:px-8
+
   return (
     <html lang="en">
-      <body className='max-w-3xl mx-auto py-10'>
+      <body className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8'>
         <ProviderTheme>
           <header className='flex items-center justify-between'>
               <Link 
@@ -30,6 +33,7 @@ export default async function RootLayout({
                 Logo
               </Link>
               <div className='flex items-center gap-3 text-sm text-gray-600'>
+                <ThemeSwitcher />                
                 {pages.map(page => (
                   <Link 
                     key={page._id} 
